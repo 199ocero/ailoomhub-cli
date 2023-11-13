@@ -20,8 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('postgresql', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
