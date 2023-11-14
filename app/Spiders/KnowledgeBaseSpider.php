@@ -3,19 +3,28 @@
 namespace App\Spiders;
 
 use Generator;
-use RoachPHP\Downloader\Middleware\RequestDeduplicationMiddleware;
-use RoachPHP\Extensions\LoggerExtension;
-use RoachPHP\Extensions\StatsCollectorExtension;
+use RoachPHP\Http\Request;
 use RoachPHP\Http\Response;
 use RoachPHP\Spider\BasicSpider;
 use RoachPHP\Spider\ParseResult;
+use RoachPHP\Extensions\LoggerExtension;
+use RoachPHP\Extensions\StatsCollectorExtension;
+use RoachPHP\Downloader\Middleware\RequestDeduplicationMiddleware;
 
 class KnowledgeBaseSpider extends BasicSpider
 {
-    public array $startUrls = [
-        'https://roach-php.dev/docs/spiders',
-        'https://roach-php.dev/docs/introduction'
-    ];
+
+    /** @return Request[] */
+    protected function initialRequests(): array
+    {
+        return [
+            new Request(
+                'GET',
+                'https://roach-php.dev/docs/spiders',
+                [$this, 'parse']
+            ),
+        ];
+    }
 
     public array $downloaderMiddleware = [
         RequestDeduplicationMiddleware::class,
