@@ -15,11 +15,6 @@ class EmbedCollection extends Model
         "name"
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function notionIntegration(): BelongsTo
     {
         return $this->belongsTo(NotionIntegration::class);
