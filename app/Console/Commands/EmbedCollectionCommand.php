@@ -36,6 +36,7 @@ class EmbedCollectionCommand extends Command
 
         if ($users->count() == 0) {
             error('No users found. Please create a user first.');
+            error('Command: php artisan make:user');
             return;
         }
 
@@ -50,6 +51,7 @@ class EmbedCollectionCommand extends Command
 
         if ($notionIntegration->count() == 0) {
             error('Notion integration not found. Please create an integration first.');
+            error('Command: php artisan make:notion');
             return;
         }
 

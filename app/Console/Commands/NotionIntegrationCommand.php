@@ -33,6 +33,7 @@ class NotionIntegrationCommand extends Command
 
         if ($users == 0) {
             error('No users found. Please create a user first.');
+            error('Command: php artisan make:user');
             return;
         }
 
