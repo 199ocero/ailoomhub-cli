@@ -18,7 +18,7 @@ class EmbedCollectionCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:embedding-collection';
+    protected $signature = 'make:embed-collection';
 
     /**
      * The console command description.
