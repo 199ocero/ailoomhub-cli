@@ -6,7 +6,7 @@ use FiveamCode\LaravelNotionApi\Notion;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Crypt;
 
-class PageLinkRetriever
+class PageRetriever
 {
     protected $notion;
 
