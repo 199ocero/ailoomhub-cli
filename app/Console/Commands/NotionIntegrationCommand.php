@@ -38,14 +38,14 @@ class NotionIntegrationCommand extends Command
         }
 
         $user = select(
-            label: 'Select a user',
+            label: 'Select User',
             options: User::query()->pluck('name', 'id'),
             required: 'User is required.',
             scroll: 10
         );
 
         $name = text(
-            label: 'Provide Notion integration name',
+            label: 'Provide Notion Integration Name',
             placeholder: 'E.g. AILoomHub',
             required: 'Integration name is required.',
             validate: fn (string $value) => match (true) {
