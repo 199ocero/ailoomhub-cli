@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('notion_pages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('embed_collection_id')->references('id')->on('embed_collections')->onDelete('cascade');
-            $table->string('link');
+            $table->string('page_id');
             $table->timestamps();
         });
     }

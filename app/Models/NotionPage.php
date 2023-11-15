@@ -12,7 +12,7 @@ class NotionPage extends Model
 
     protected $fillable = [
         'embed_collection_id',
-        'link'
+        'page_id'
     ];
 
     public function embedCollection(): BelongsTo
