@@ -2,14 +2,14 @@
 
 namespace App\Console\Commands;
 
-use App\Models\NotionToken;
+use App\Models\NotionIntegration;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Crypt;
 
 use function Laravel\Prompts\{password, text, select, error};
 
-class NotionTokenCommand extends Command
+class NotionIntegrationCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -44,7 +44,7 @@ class NotionTokenCommand extends Command
             scroll: 10
         );
 
-        $integrationName = text(
+        $name = text(
             label: 'Provide Notion integration name',
             placeholder: 'E.g. AILoomHub',
             required: 'Integration name is required.',
@@ -63,9 +63,9 @@ class NotionTokenCommand extends Command
             hint: 'We need this to access the Notion API.'
         );
 
-        NotionToken::create([
+        NotionIntegration::create([
             'user_id' => $user,
-            'integration_name' => $integrationName,
+            'name' => $name,
             'token' => Crypt::encryptString($notionSecret),
         ]);
 

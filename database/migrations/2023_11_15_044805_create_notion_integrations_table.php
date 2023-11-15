@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notion_tokens', function (Blueprint $table) {
+        Schema::create('notion_integrations', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
-            $table->string('integration_name');
+            $table->string('name');
             $table->text('token');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notion_tokens');
+        Schema::dropIfExists('notion_integrations');
     }
 };

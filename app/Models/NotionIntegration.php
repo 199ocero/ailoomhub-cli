@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class NotionToken extends Model
+class NotionIntegration extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'integration_name',
+        'name',
         'token',
     ];
 
