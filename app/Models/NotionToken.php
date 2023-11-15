@@ -12,6 +12,7 @@ class NotionToken extends Model
 
     protected $fillable = [
         'user_id',
+        'integration_name',
         'token',
     ];
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('notion_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->string('integration_name');
             $table->text('token');
             $table->timestamps();
         });
