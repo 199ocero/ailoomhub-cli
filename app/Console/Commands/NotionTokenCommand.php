@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Crypt;
 
-use function Laravel\Prompts\{password, text, select, info};
+use function Laravel\Prompts\{password, text, select, error};
 
 class NotionTokenCommand extends Command
 {
@@ -33,7 +33,7 @@ class NotionTokenCommand extends Command
         $users = User::query()->get()->count();
 
         if ($users == 0) {
-            info('No users found. Please create a user first.');
+            error('No users found. Please create a user first.');
             return;
         }
 
