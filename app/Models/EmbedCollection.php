@@ -11,7 +11,6 @@ class EmbedCollection extends Model
     use HasFactory;
 
     protected $fillable = [
-        "user_id",
         'notion_integration_id',
         "name"
     ];
