@@ -6,8 +6,7 @@ use App\Models\NotionIntegration;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Crypt;
-
-use function Laravel\Prompts\{password, text, select, error};
+use function Laravel\Prompts\{password, text, select, error, info};
 
 class NotionIntegrationCommand extends Command
 {
