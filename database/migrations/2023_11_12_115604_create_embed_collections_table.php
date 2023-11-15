@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('embed_collections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
+            $table->foreignId("notion_integration_id")->references("id")->on("notion_integrations")->onDelete("cascade");
             $table->string("name");
-            $table->json("meta_data");
             $table->timestamps();
         });
     }

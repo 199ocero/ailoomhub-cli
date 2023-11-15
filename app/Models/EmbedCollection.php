@@ -12,16 +12,17 @@ class EmbedCollection extends Model
 
     protected $fillable = [
         "user_id",
-        "name",
-        "meta_data"
-    ];
-
-    protected $casts = [
-        "meta_data" => "array",
+        'notion_integration_id',
+        "name"
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function notionIntegration(): BelongsTo
+    {
+        return $this->belongsTo(NotionIntegration::class);
     }
 }
