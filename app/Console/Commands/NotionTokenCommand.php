@@ -52,7 +52,8 @@ class NotionTokenCommand extends Command
                 strlen($value) < 3 => 'The name must be at least 3 characters.',
                 strlen($value) > 255 => 'The name must not exceed 255 characters.',
                 default => null
-            }
+            },
+            hint: 'We suggest to use the name of integration that you created on Notion.'
         );
 
         $notionSecret = password(
