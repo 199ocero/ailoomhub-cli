@@ -24,4 +24,9 @@ class PageRetriever
     {
         return $this->notion->search()->onlyPages()->query()->asCollection();
     }
+
+    public function retrieveById(string $pageId): Collection
+    {
+        return $this->notion->block($pageId)->children()->asCollection();
+    }
 }
