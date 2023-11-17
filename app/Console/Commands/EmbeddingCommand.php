@@ -135,7 +135,7 @@ class EmbeddingCommand extends Command
 
                         info('Word Count: ' . str_word_count($chunkedText));
 
-                        $embeddings = OpenAIAgent::make($chunkedText)->embeddings();
+                        $embeddings = OpenAIAgent::make()->embeddings($chunkedText);
 
                         Embedding::query()->create([
                             'embed_collection_id' => $embedCollection,
