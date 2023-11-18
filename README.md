@@ -31,6 +31,8 @@ Before starting, ensure you have set your OpenAI Secret Key in the `.env` file:
 OPENAI_API_KEY=sk-tzY...
 ```
 
+### Prompt Steps
+
 1. **Create User:** To create a user, run:
     ```bash
     php artisan make:user
@@ -57,7 +59,7 @@ OPENAI_API_KEY=sk-tzY...
     php artisan make:embedding
     ```
 
-7. **Use Embed Collection for Queries:** Utilize the embed collection to interact:
+7. **Ask a Chatbot:** You can now test if your chatbot is working:
     ```bash
     php artisan ask:chatbot
     ```
