@@ -100,17 +100,23 @@ class ChatbotCommand extends Command
                 ->select("text")
                 ->selectSub("embedding <=> '{$vector}'::vector", "distance")
                 ->where('embed_collection_id', $embedCollectionIntegration->id)
-                ->limit(2)
+                ->limit(1)
                 ->orderBy('distance', 'asc')
                 ->get(),
             'Finding similar embeddings...'
         );
 
+        $threshold = 0.5;
+
+        $context = $result->filter(function ($item) use ($threshold) {
+            return (float)$item->distance >= $threshold;
+        })->pluck('text')->toArray();
+
         sleep(1);
 
-        $context = collect($result)->map(function ($item) {
-            return $item->text;
-        });
+        if (count($context) == 0) {
+            $context = "No context found";
+        }
 
         $response = spin(
             fn () => OpenAIAgent::make()->askQuestion($context, $question, 200),

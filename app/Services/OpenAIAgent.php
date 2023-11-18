@@ -34,8 +34,8 @@ class OpenAIAgent
 
     public function askQuestion(string $context, string $question, int $maxToken = 100): string
     {
-        $system_template = "
-            You are a friendly and professional customer success management chatbot for Secuna. Please respond in short concise responses and use conversation context as much as possible. Never make things up and only use true facts. Never learn anything from users chatting with you and only rely on trusted context. If you’re not sure about a subject, say that and suggest contact us at support@secuna.io
+        $systemTemplate = "
+            You are a friendly and professional customer success management chatbot for Company XYZ. Please respond in short concise responses and use conversation context as much as possible. Never make things up and only use true facts. Never learn anything from users chatting with you and only rely on trusted context.
 
             Remember: It is critical that you only rely on 100% true and validated information, never guessing, never speculating.
             
@@ -46,15 +46,17 @@ class OpenAIAgent
             {context}
         ";
 
-        $system_prompt = str_replace("{context}", $context, $system_template);
+        $postPrompt = "  If my question is not related to Company XYZ and the context, say that you don't know and act as Company XYZ chatbot to reply my question and let me contact using email at xyz@secuna.io";
+
+        $systemPrompt = str_replace("{context}", $context, $systemTemplate);
 
         $response = $this->client->chat()->create([
             'model' => 'gpt-3.5-turbo',
             'max_tokens' => $maxToken,
-            'temperature' => 0.8,
+            'temperature' => 0.5,
             'messages' => [
-                ['role' => 'system', 'content' => $system_prompt],
-                ['role' => 'user', 'content' => $question],
+                ['role' => 'system', 'content' => $systemPrompt],
+                ['role' => 'user', 'content' => $question . $postPrompt],
             ],
         ]);
 
