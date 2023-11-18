@@ -106,17 +106,9 @@ class ChatbotCommand extends Command
             'Finding similar embeddings...'
         );
 
-        $threshold = 0.2;
-
-        $context = $result->filter(function ($item) use ($threshold) {
-            return (float)$item->distance >= $threshold;
-        })->pluck('text')->toArray();
-
-        if (count($context) == 0) {
-            $context = "No context found";
-        } else {
-            $context = implode(" ", $context);
-        }
+        $context = collect($result)->map(function ($item) {
+            return $item->text;
+        });
 
         $response = spin(
             fn () => OpenAIAgent::make()->askQuestion($context, $question, 200),
