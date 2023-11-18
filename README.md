@@ -1,6 +1,6 @@
 # AILoomHub CLI
 
-CLI tool to use Notion as your knowledge base and use OpenAI models to generate and expand the knowledge.
+Command Line Interface (CLI) tool designed for utilizing Notion as your knowledge base, with the capability to leverage OpenAI models for generating and enhancing information.
 
 ## Installation
 
