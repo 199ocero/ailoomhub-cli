@@ -21,6 +21,27 @@ Run the following command in the project directory:
 composer install
 ```
 
+### PostgreSQL Setup
+
+To get started, make sure you have PostgreSQL installed on your system. If you don't have it installed yet, you can download it [here](link_to_download).
+
+#### Creating a Database
+
+Once PostgreSQL is installed, create a database for your project by following these steps:
+
+1. Open your PostgreSQL environment.
+2. Use the appropriate commands to create a new database.
+
+#### Installing pgvector Extension
+
+To enable vector similarity search in your PostgreSQL database, you'll need to install the `pgvector` extension. Follow these instructions:
+
+1. Refer to the [official documentation](link_to_pgvector_docs) for the `pgvector` extension.
+2. Follow the provided instructions to install the extension in your PostgreSQL environment.
+
+After completing these steps, your PostgreSQL setup should be ready for use with the `pgvector` extension.
+
+
 ### Setup
 
 #### OpenAI API Key
