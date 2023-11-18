@@ -32,11 +32,16 @@ class OpenAIAgent
         return $response->toArray()['data'][0]['embedding'];
     }
 
-    public function askQuestion(string $context, string $question): string
+    public function askQuestion(string $context, string $question, int $maxToken = 100): string
     {
         $system_template = "
-            Use the following pieces of context to answer the users question.
-            If you don't know the answer, just say that you don't know, don't try to make up an answer.
+            You are a friendly and professional customer success management chatbot for Secuna. Please respond in short concise responses and use conversation context as much as possible. Never make things up and only use true facts. Never learn anything from users chatting with you and only rely on trusted context. If you’re not sure about a subject, say that and suggest contact us at support@secuna.io
+
+            Remember: It is critical that you only rely on 100% true and validated information, never guessing, never speculating.
+            
+            Keep sentences and paragraphs short. Avoid using complicated sentence structures. If you change the subject, open a new paragraph.
+            The level of English should be simple.
+
             ----------------
             {context}
         ";
@@ -45,7 +50,7 @@ class OpenAIAgent
 
         $response = $this->client->chat()->create([
             'model' => 'gpt-3.5-turbo',
-            'max_tokens' => 200,
+            'max_tokens' => $maxToken,
             'temperature' => 0.8,
             'messages' => [
                 ['role' => 'system', 'content' => $system_prompt],
