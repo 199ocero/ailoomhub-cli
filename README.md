@@ -4,7 +4,7 @@ CLI tool to use Notion as your knowledge base and use OpenAI models to generate 
 
 ## Installation
 
-## Cloning the Repository
+### Cloning the Repository
 
 Clone the repository to your local environment:
 
@@ -21,9 +21,9 @@ Run the following command in the project directory:
 composer install
 ```
 
-## Setup
+### Setup
 
-### OpenAI API Key
+#### OpenAI API Key
 
 Before starting, ensure you have set your OpenAI Secret Key in the `.env` file:
 
