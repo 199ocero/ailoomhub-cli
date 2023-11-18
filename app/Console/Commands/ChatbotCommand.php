@@ -106,16 +106,16 @@ class ChatbotCommand extends Command
             'Finding similar embeddings...'
         );
 
-        $threshold = 0.5;
+        $threshold = 0.2;
 
         $context = $result->filter(function ($item) use ($threshold) {
             return (float)$item->distance >= $threshold;
         })->pluck('text')->toArray();
 
-        sleep(1);
-
         if (count($context) == 0) {
             $context = "No context found";
+        } else {
+            $context = implode(" ", $context);
         }
 
         $response = spin(
